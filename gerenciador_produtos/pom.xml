@@ -5,6 +5,26 @@
     <artifactId>pi3-ado1</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
+    
+     <organization>
+        <name>Fantastic Four</name>
+    </organization>
+    <developers>
+        <developer>
+            <name>Letícia Siqueira</name>
+        </developer>
+        <developer>
+            <name>Marina Fraga</name>
+        </developer>
+        <developer>
+            <name>Andreas Borba</name>
+        </developer>
+        <developer>
+            <name>Douglas Brito</name>
+        </developer>
+    </developers>
+    
+    
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>
@@ -12,6 +32,7 @@
             <version>5.1.23</version>
         </dependency>
     </dependencies>
+    
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
