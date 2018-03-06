@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import senac.ads.pi3.gerenciador_produtos.connection.ConnectionFactory;
+import senac.ads.pi3.gerenciador_produtos.model.Categoria;
 import senac.ads.pi3.gerenciador_produtos.model.Produto;
 
 public class ProdutoDAO {       
@@ -132,5 +133,32 @@ public class ProdutoDAO {
             ConnectionFactory.closeConnection(con, stmt);
         } 
     }
+    
+    public List<Categoria> read(){
+        Connection con = ConnectionFactory.getConnetion();        
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        
+        List<Categoria> categorias = new ArrayList<>();
+                
+        try {
+            stmt = con.prepareStatement("SELECT * FROM PRODUTOBD.CATEGORIA");
+            rs = stmt.executeQuery();
+            
+            while(rs.next()){
+                
+                Categoria categoria = new Categoria();
+                categoria.setId(rs.getInt("id"));
+                categoria.setNome(rs.getString("nome"));
+                categorias.add(categoria);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }finally {
+            ConnectionFactory.closeConnection(con, stmt, rs);
+        } 
+        
+        return categorias;
+    }    
             
 }
